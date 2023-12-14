@@ -7,40 +7,31 @@
     android:layout_height="match_parent"
     tools:context=".AboutActivity">
 
-    <androidx.appcompat.widget.Toolbar
-        android:id="@+id/aboutToolbar"
-        android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
-        android:background="?attr/colorPrimary"
-        android:elevation="4dp"
-        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_constraintTop_toTopOf="parent" />
-
     <ImageView
         android:id="@+id/image_Logo"
-        android:layout_width="227dp"
-        android:layout_height="218dp"
+        android:layout_width="237dp"
+        android:layout_height="207dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/aboutToolbar"
-        app:layout_constraintVertical_bias="0.026"
+        app:layout_constraintVertical_bias="0.0"
         app:srcCompat="@drawable/gold_zakat" />
 
     <TextView
         android:id="@+id/dev_details"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="DEVELOPER DETAILS"
         android:fontFamily="@font/roboto_medium"
+        android:text="DEVELOPER DETAILS"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.101"
+        app:layout_constraintHorizontal_bias="0.1"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/image_Logo"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.438" />
 
     <TextView
         android:id="@+id/details"
@@ -95,19 +86,32 @@
         app:layout_constraintVertical_bias="0.02" />
 
     <TextView
-        android:id="@+id/web_Info"
+        android:id="@+id/app_Information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/roboto_medium"
-        android:text="APPLICATION WEBSITE"
+        android:text="APPLICATION INFORMATION"
         android:textSize="16sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.108"
+        app:layout_constraintHorizontal_bias="0.131"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5"
-        app:layout_constraintVertical_bias="0.389" />
+        app:layout_constraintVertical_bias="0.112" />
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/roboto"
+        android:text="This App helps you to calculate Zakat on Gold Value"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.656"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/app_Information"
+        app:layout_constraintVertical_bias="0.036" />
 
     <TextView
         android:id="@+id/websiteLink_text"
@@ -116,16 +120,15 @@
         android:clickable="true"
         android:fontFamily="@font/roboto"
         android:onClick="openWebsite"
-        android:text="https://github/profnina/ZakatGoldConverter/"
+        android:text="https://github.com/profnina/GoldZakatCalculator"
         android:textColor="?attr/colorAccent"
-        android:textSize="16sp"
+        android:textSize="14sp"
         android:textStyle="italic"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.546"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/web_Info"
-        app:layout_constraintVertical_bias="0.087" />
+        app:layout_constraintTop_toBottomOf="@+id/textView2"
+        app:layout_constraintVertical_bias="0.07" />
 
     <TextView
         android:id="@+id/copyrightTextView"
@@ -139,6 +142,16 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/aboutToolbar"
-        app:layout_constraintVertical_bias="0.979" />
+        app:layout_constraintVertical_bias="0.967" />
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/aboutToolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:layout_editor_absoluteX="0dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

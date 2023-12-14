@@ -1,9 +1,11 @@
 package com.example.zakatgoldcalculator;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.annotation.SuppressLint;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
@@ -75,8 +77,14 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
     }
 
     public void calculateValues() {
-        double weight = Double.parseDouble(text_inputWeight.getText().toString());
-        double value = Double.parseDouble(text_inputPrice.getText().toString());
+        try {
+            double weight = Double.parseDouble(text_inputWeight.getText().toString());
+            double value = Double.parseDouble(text_inputPrice.getText().toString());
+
+            if (weight == 0 || value == 0) {
+                showErrorDialog("Please enter non-zero weight and price values.");
+                return;
+            }
 
         double totalValue = weight * value;
         double goldValueForZakat;
@@ -98,6 +106,10 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         text_OutputGoldValueForZakat.setText(String.format("Zakat Payable Weight : %.2f g", goldValueForZakat ));
         text_OutputZakatPayable.setText(String.format("Zakat Payable : RM %.2f", zakatPayable));
         text_OutputTotalZakat.setText(String.format("Total Zakat : RM %.2f", totalZakat));
+
+        } catch (NumberFormatException e) {
+            showErrorDialog("Please enter valid numeric weight and price values.");
+        }
     }
 
 
@@ -119,7 +131,7 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         if (item.getItemId() == R.id.item_share) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, " Please use my application - https://github/profnina/ZakatGoldConverter/");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, " Please use my application - https://github.com/profnina/GoldZakatCalculator");
             startActivity(Intent.createChooser(shareIntent, null));
 
             return true;
@@ -129,6 +141,36 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         }
         return false;
     }
+
+    private void showErrorDialog(String message) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.AlertDialogStyle);
+        builder.setMessage(message)
+                .setTitle("Error")
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // Add functionality here if needed
+                        dialog.dismiss();
+                    }
+                });
+
+        AlertDialog dialog = builder.create();
+
+        // Apply the style for the "OK" button separately
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                // Get the "OK" button from the AlertDialog
+                AlertDialog alertDialog = (AlertDialog) dialogInterface;
+                if (alertDialog != null) {
+                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(android.R.color.holo_orange_dark));
+                }
+            }
+        });
+
+        dialog.show();
+    }
+
+
 
 
 }
