@@ -22,7 +22,7 @@ public class AboutActivity extends AppCompatActivity {
         setSupportActionBar(aboutToolbar);
         getSupportActionBar().setTitle("About");
 
-        //for back button   
+        //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
@@ -38,7 +38,7 @@ public class AboutActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.item_share) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, " Please use my application - nina comel");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, " Please use my application - https://github.com/profnina/GoldZakatCalculator");
             startActivity(Intent.createChooser(shareIntent, null));
 
             return true;
@@ -50,7 +50,7 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     public void openWebsite(View view) {
-        String url = "https://github.com/";
+        String url = "https://github.com/profnina/GoldZakatCalculator";
         Intent intent = new Intent(Intent.ACTION_VIEW);
         intent.setData(Uri.parse(url));
         startActivity(intent);
