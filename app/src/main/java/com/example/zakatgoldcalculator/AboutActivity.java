@@ -10,7 +10,7 @@ import android.view.MenuItem;
 import android.view.View;
 
 public class AboutActivity extends AppCompatActivity {
-///ninaaaa comel
+
     Toolbar aboutToolbar;
 
     @Override
