@@ -38,7 +38,7 @@ public class AboutActivity extends AppCompatActivity {
         if (item.getItemId() == R.id.item_share) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
-            shareIntent.putExtra(Intent.EXTRA_TEXT, " Please use my application - http://+601161135841.me.com");
+            shareIntent.putExtra(Intent.EXTRA_TEXT, " Please use my application - nina comel");
             startActivity(Intent.createChooser(shareIntent, null));
 
             return true;
