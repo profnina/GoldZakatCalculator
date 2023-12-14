@@ -22,7 +22,7 @@ public class AboutActivity extends AppCompatActivity {
         setSupportActionBar(aboutToolbar);
         getSupportActionBar().setTitle("About");
 
-        //for back button
+        //for back button   
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
     }
