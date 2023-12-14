@@ -9,6 +9,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -41,6 +42,8 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         //for back button
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setDisplayShowHomeEnabled(true);
+        showInstructionactivity_manual();
+
 
         //convert unit part
         text_inputWeight = (EditText) findViewById(R.id.text_inputWeight);
@@ -56,6 +59,7 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         text_OutputTotalZakat = (TextView) findViewById(R.id.text_OutputTotalZakat);
         text_OutputGoldValueForZakat = (TextView) findViewById(R.id.text_OutputGoldValueForZakat);
 
+
         btn_Convert.setOnClickListener(this);
 
     }
@@ -67,6 +71,38 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         Button button = (Button) click;
         button.setText("Disabled");
 
+    }
+
+    private AlertDialog showInstructionactivity_manual() {
+        AlertDialog.Builder builder = new AlertDialog.Builder(this, R.style.manual_style);
+
+        builder.setTitle("Instructions to use Zakat Calculator");
+        View view = LayoutInflater.from(this).inflate(R.layout.activity_manual, null);
+        builder.setView(view);
+
+        builder.setPositiveButton("Okay", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                // Dismiss the dialog
+                dialog.dismiss();
+            }
+        });
+
+        // Create and show the dialog
+        AlertDialog dialog = builder.create();
+        dialog.setOnShowListener(new DialogInterface.OnShowListener() {
+            @Override
+            public void onShow(DialogInterface dialogInterface) {
+                // Get the AlertDialog from dialogInterface and set the button text color
+                AlertDialog alertDialog = (AlertDialog) dialogInterface;
+                if (alertDialog != null) {
+                    alertDialog.getButton(AlertDialog.BUTTON_POSITIVE).setTextColor(getResources().getColor(android.R.color.holo_orange_dark));
+                }
+            }
+        });
+        dialog.show();
+
+        return dialog; // Return the created AlertDialog
     }
 
     @Override
@@ -128,6 +164,7 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
             super.onBackPressed();
         }
 
+
         if (item.getItemId() == R.id.item_share) {
             Intent shareIntent = new Intent(Intent.ACTION_SEND);
             shareIntent.setType("text/plain");
@@ -138,6 +175,9 @@ public class ConverterActivity extends AppCompatActivity implements View.OnClick
         } else if (item.getItemId() == R.id.item_about) {
             Intent aboutIntent = new Intent(this, AboutActivity.class);
             startActivity(aboutIntent);
+        }
+        else if (item.getItemId() == R.id.btnHelp) {
+            showInstructionactivity_manual(); // Call the method to show the instruction dialog
         }
         return false;
     }

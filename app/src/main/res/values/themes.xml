@@ -23,6 +23,12 @@
         <item name="android:textColor">@android:color/black</item>
     </style>
 
+    <!-- Define a style for the AlertDialog with black text -->
+    <style name="manual_style" parent="Theme.AppCompat.Light.Dialog.Alert">
+        <item name="android:textColor">@android:color/holo_orange_dark</item>
+    </style>
+
+
     <!-- Define a style for the "OK" button in the AlertDialog with an orange text color -->
     <style name="AlertDialogButtonStyle" parent="Widget.AppCompat.Button.ButtonBar.AlertDialog">
         <item name="android:textColor">@android:color/holo_orange_light</item>
